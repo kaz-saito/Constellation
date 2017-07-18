@@ -73,6 +73,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connection.vb" />
+    <Compile Include="DataAdder.Designer.vb">
+      <DependentUpon>DataAdder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DataAdder.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoneMaintenance.Designer.vb">
+      <DependentUpon>DoneMaintenance.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DoneMaintenance.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Login.Designer.vb">
       <DependentUpon>Login.vb</DependentUpon>
     </Compile>
@@ -121,6 +133,12 @@
     <Compile Include="SearchDao.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="DataAdder.resx">
+      <DependentUpon>DataAdder.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoneMaintenance.resx">
+      <DependentUpon>DoneMaintenance.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.vb</DependentUpon>
     </EmbeddedResource>
