@@ -13,3 +13,4 @@ C:\Users\m-arino\Documents\GitHub\Constellation\ConstellationListProject\Constel
 C:\Users\m-arino\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.exe
 C:\Users\m-arino\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.xml
 C:\Users\m-arino\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.pdb
+C:\Users\m-arino\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.vbprojResolveAssemblyReference.cache

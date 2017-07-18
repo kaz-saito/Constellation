@@ -104,7 +104,7 @@ Partial Class MainMenu
         '
         'TextBox1
         '
-        Me.TextBox1.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.TextBox1.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.TextBox1.Location = New System.Drawing.Point(91, 93)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
