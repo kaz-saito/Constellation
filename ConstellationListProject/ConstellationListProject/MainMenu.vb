@@ -3,18 +3,18 @@
 Public Class MainMenu
     Public Shared cn As System.Data.SqlClient.SqlConnection
 
-    Dim length As Integer
-    Dim count As Integer = 0
-    Dim conlist As New List(Of String)
-    Dim ab As New List(Of String)
-    Dim pageCount As Integer = 1
-    Dim page As Double
-    Dim forCount As Integer
-    Dim flag As Boolean = True
+    Private length As Integer
+    Private count As Integer = 0
+    Private conlist As New List(Of String)
+    Private ab As New List(Of String)
+    Private pageCount As Integer = 1
+    Private page As Double
+    Private forCount As Integer
+
 
     Private Sub MainMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        For i = 1 To 14
+        For i = 1 To 17
             ab.Add(i)
         Next
 
@@ -24,12 +24,12 @@ Public Class MainMenu
         Dim cmd As New SqlClient.SqlCommand
 
         '現在月取得
-        'Dim dtNow = GetMonth()
-        Dim dtNow = 11
+        Dim dtNow = GetMonth()
         Console.WriteLine(dtNow)
 
         '季節コード取得
         Dim seasonCode = FindSeasonalCode(dtNow)
+
         Console.WriteLine(seasonCode)
 
         'Label1表示処理
@@ -60,13 +60,13 @@ Public Class MainMenu
                 Label2.Text = Label2.Text + cReader("CONSTELLATION_NAME")
             End While
             'ページの枚数を計算
-            page = Math.Ceiling(ab.Count / 5)
+            page = Math.Ceiling(conlist.Count / 5)
             'リストのサイズを取得
-            length = ab.Count
+            length = conlist.Count
             'ページ数表示
             pageNum()
             'listを表示
-            viewlist(ab)
+            viewlist(conlist)
 
 
         Catch ex As Exception
@@ -123,13 +123,13 @@ Public Class MainMenu
 
         Select Case dtNow
             Case 3 To 5
-                seasonCode = "1"
+                seasonCode = "0"
             Case 6 To 8
-                seasonCode = "2"
+                seasonCode = "1"
             Case 9 To 11
-                seasonCode = "3"
+                seasonCode = "2"
             Case 12, 1, 2
-                seasonCode = "4"
+                seasonCode = "3"
 
         End Select
 
@@ -138,13 +138,13 @@ Public Class MainMenu
     End Function
     Private Sub DispLabel1(ByRef seasonCode)
         Select Case seasonCode
-            Case "1"
+            Case "0"
                 Label1.Text = "春の星座"
-            Case "2"
+            Case "1"
                 Label1.Text = "夏の星座"
-            Case "3"
+            Case "2"
                 Label1.Text = "秋の星座"
-            Case "4"
+            Case "3"
                 Label1.Text = "冬の星座"
         End Select
     End Sub
@@ -197,7 +197,7 @@ Public Class MainMenu
             forCount = 0
             pageNum()
 
-            viewlist(ab)
+            viewlist(conlist)
         End If
     End Sub
 
@@ -211,7 +211,7 @@ Public Class MainMenu
             End If
             pageCount = pageCount - 1
             pageNum()
-            viewlist(ab)
+            viewlist(conlist)
         End If
     End Sub
 
