@@ -28,6 +28,7 @@ C:\Users\t-ohta\Documents\GitHub\Constellation\ConstellationListProject\Constell
 C:\Users\t-ohta\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.pdb
 C:\Users\t-ohta\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.DataAdder.resources
 C:\Users\t-ohta\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.DoneMaintenance.resources
+<<<<<<< HEAD
 C:\Users\m-arino\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\bin\Debug\ConstellationListProject.exe.config
 C:\Users\m-arino\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\bin\Debug\ConstellationListProject.exe
 C:\Users\m-arino\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\bin\Debug\ConstellationListProject.pdb
@@ -44,3 +45,21 @@ C:\Users\m-arino\Documents\GitHub\Constellation\ConstellationListProject\Constel
 C:\Users\m-arino\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.exe
 C:\Users\m-arino\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.xml
 C:\Users\m-arino\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.pdb
+=======
+C:\Users\k-saitou\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\bin\Debug\ConstellationListProject.exe.config
+C:\Users\k-saitou\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\bin\Debug\ConstellationListProject.exe
+C:\Users\k-saitou\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\bin\Debug\ConstellationListProject.pdb
+C:\Users\k-saitou\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\bin\Debug\ConstellationListProject.xml
+C:\Users\k-saitou\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.vbprojResolveAssemblyReference.cache
+C:\Users\k-saitou\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.DataAdder.resources
+C:\Users\k-saitou\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.DoneMaintenance.resources
+C:\Users\k-saitou\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.MainMenu.resources
+C:\Users\k-saitou\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.MaintenanceMenu.resources
+C:\Users\k-saitou\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.MasterMaintenance.resources
+C:\Users\k-saitou\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.Resources.resources
+C:\Users\k-saitou\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.Search.resources
+C:\Users\k-saitou\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.vbproj.GenerateResource.Cache
+C:\Users\k-saitou\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.exe
+C:\Users\k-saitou\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.xml
+C:\Users\k-saitou\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.pdb
+>>>>>>> 95ab4f610adc0f1a0a7718139152afd2052db7b3
