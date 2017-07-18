@@ -90,48 +90,51 @@
 
     Private Sub nextButton_Click(sender As Object, e As EventArgs) Handles nextButton.Click
 
+        If constellationList IsNot Nothing Then
 
-        If page + 5 >= 0 And page + 5 < constellationList.Count() Then
+            If page + 5 >= 0 And page + 5 < constellationList.Count() Then
 
-            startPage = page + 5
+                startPage = page + 5
 
-            resultView.Clear()
+                resultView.Clear()
 
-            resultView.View = View.Details
+                resultView.View = View.Details
 
-            resultView.Columns.Add("星座名", 135, HorizontalAlignment.Center)
+                resultView.Columns.Add("星座名", 135, HorizontalAlignment.Center)
 
-            Dim i As Integer = 0
+                Dim i As Integer = 0
 
-            For page = page + 5 To page + 9
+                For page = page + 5 To page + 9
 
-                If constellationList.Count() > page Then
-                    resultView.Items.Add(constellationList(page))
+                    If constellationList.Count() > page Then
+                        resultView.Items.Add(constellationList(page))
 
-                    i = i + 1
+                        i = i + 1
 
-                Else
+                    Else
 
-                    Exit For
+                        Exit For
 
-                End If
+                    End If
 
 
-            Next
+                Next
 
-            For j As Integer = 0 To i
-                If j Mod 2 = 0 Then
-                    resultView.Items(j).BackColor = Color.Cyan
-                End If
-            Next
+                For j As Integer = 0 To i
+                    If j Mod 2 = 0 Then
+                        resultView.Items(j).BackColor = Color.Cyan
+                    End If
+                Next
 
-            page = startPage
+                page = startPage
 
-            countPage = countPage + 1
+                countPage = countPage + 1
 
-            Label2.Text = countPage & "/" & maxPage
+                Label2.Text = countPage & "/" & maxPage
 
-            resultView.GridLines = True
+                resultView.GridLines = True
+
+            End If
 
         End If
 
@@ -139,46 +142,50 @@
 
     Private Sub backButton_Click(sender As Object, e As EventArgs) Handles backButton.Click
 
-        If page - 5 >= 0 And page - 5 < constellationList.Count() Then
+        If constellationList IsNot Nothing Then
 
-            startPage = page - 5
+            If page - 5 >= 0 And page - 5 < constellationList.Count() Then
 
-            resultView.Clear()
+                startPage = page - 5
 
-            resultView.View = View.Details
+                resultView.Clear()
 
-            resultView.Columns.Add("星座名", 135, HorizontalAlignment.Center)
+                resultView.View = View.Details
 
-            Dim i As Integer = 0
+                resultView.Columns.Add("星座名", 135, HorizontalAlignment.Center)
 
-            For page = page - 5 To page - 1
+                Dim i As Integer = 0
 
-                If constellationList.Count() > page Then
-                    resultView.Items.Add(constellationList(page))
+                For page = page - 5 To page - 1
 
-                    i = i + 1
+                    If constellationList.Count() > page Then
+                        resultView.Items.Add(constellationList(page))
 
-                Else
+                        i = i + 1
 
-                    Exit For
+                    Else
 
-                End If
+                        Exit For
 
-            Next
+                    End If
 
-            For j As Integer = 0 To i
-                If j Mod 2 = 0 Then
-                    resultView.Items(j).BackColor = Color.Cyan
-                End If
-            Next
+                Next
 
-            page = startPage
+                For j As Integer = 0 To i
+                    If j Mod 2 = 0 Then
+                        resultView.Items(j).BackColor = Color.Cyan
+                    End If
+                Next
 
-            countPage = countPage - 1
+                page = startPage
 
-            Label2.Text = countPage & "/" & maxPage
+                countPage = countPage - 1
 
-            resultView.GridLines = True
+                Label2.Text = countPage & "/" & maxPage
+
+                resultView.GridLines = True
+
+            End If
 
         End If
 
