@@ -1,7 +1,27 @@
-﻿Public Class MainMenu
+﻿Imports System.Data.SqlClient
+
+Public Class MainMenu
+    Public Shared cn As System.Data.SqlClient.SqlConnection
+
+    Dim length As Integer
+    Dim count As Integer = 0
+    Dim conlist As New List(Of String)
+    Dim ab As New List(Of String)
+    Dim pageCount As Integer = 1
+    Dim page As Double
+    Dim forCount As Integer
+    Dim flag As Boolean = True
+
     Private Sub MainMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        For i = 1 To 14
+            ab.Add(i)
+        Next
+
         'DB接続
         DbCon()
+
+        Dim cmd As New SqlClient.SqlCommand
 
         '現在月取得
         'Dim dtNow = GetMonth()
@@ -15,40 +35,84 @@
         'Label1表示処理
         DispLabel1(seasonCode)
 
+        Try
+            DbCon()
+
+            'コネクションの指定
+            cmd.Connection = cn
+            'コマンドの種類をテキストにする（省略可）
+            cmd.CommandType = CommandType.Text
+            '実行するSQLを指定
+            cmd.CommandText = "SELECT CONSTELLATION_NAME FROM M_CONSTELLATION WHERE SEASON_ID = @id"
+            cmd.Parameters.AddWithValue("@id", seasonCode)
+
+            'SQLの結果を取得する
+            Dim sr As SqlClient.SqlDataReader
+            sr = cmd.ExecuteReader()
+
+            Dim cReader As System.Data.SqlClient.SqlDataReader = sr
+
+            cmd.Dispose()
+
+            While (cReader.Read())
+
+                conlist.Add(cReader("CONSTELLATION_NAME"))
+                Label2.Text = Label2.Text + cReader("CONSTELLATION_NAME")
+            End While
+            'ページの枚数を計算
+            page = Math.Ceiling(ab.Count / 5)
+            'リストのサイズを取得
+            length = ab.Count
+            'ページ数表示
+            pageNum()
+            'listを表示
+            viewlist(ab)
+
+
+        Catch ex As Exception
+
+            MsgBox("エラー")
+
+        Finally
+
+            DbDisCon()
+
+        End Try
+
+
 
 
     End Sub
     Private Sub DbCon()
-        Dim cn As System.Data.SqlClient.SqlConnection
-        Try
-            '端末
-            Dim ServerName As String = "192.168.0.173"
-            'DB名
-            Dim DBName As String = "master"
-            'ユーザー名
-            Dim UserId As String = "sa"
-            'パスワード
-            Dim Password As String = "SaPassword2017"
 
-            cn = New System.Data.SqlClient.SqlConnection
+        '端末
+        Dim ServerName As String = "192.168.0.173"
+        'DB名
+        Dim DBName As String = "master"
+        'ユーザー名
+        Dim UserId As String = "sa"
+        'パスワード
+        Dim Password As String = "SaPassword2017"
 
-            cn.ConnectionString =
-            "Data Source = " & ServerName &
-            ";Initial Catalog = " & DBName &
-            ";User ID = " & UserId &
-            ";Password = " & Password
-            cn.Open()
+        cn = New System.Data.SqlClient.SqlConnection
 
-            Console.WriteLine("{0}の{1}に接続しました", ServerName, DBName)
-        Catch ex As Exception
-            Console.WriteLine("Error! {0}", ex.Message)
-        Finally
-            'コネクションを閉じリソースを開放する
-            If cn.State <> ConnectionState.Closed Then
-                cn.Close()
-            End If
-            cn.Dispose()
-        End Try
+        cn.ConnectionString =
+        "Data Source = " & ServerName &
+        ";Initial Catalog = " & DBName &
+        ";User ID = " & UserId &
+        ";Password = " & Password
+        cn.Open()
+
+        Console.WriteLine("{0}の{1}に接続しました", ServerName, DBName)
+
+    End Sub
+    Private Sub DbDisCon()
+
+        If cn.State <> ConnectionState.Closed Then
+            cn.Close()
+        End If
+        cn.Dispose()
+
     End Sub
     Private Function GetMonth() As Integer
         Dim dtNow As DateTime = DateTime.Now
@@ -84,6 +148,33 @@
                 Label1.Text = "冬の星座"
         End Select
     End Sub
+    'ページ数に応じたリストの内容表示メソッド
+    Private Sub viewlist(list As List(Of String))
+
+        If count < length And count >= 0 Then
+
+            For i As Integer = 1 To 5
+                TextBox1.Text = TextBox1.Text + list(count) & vbCrLf
+                count = count + 1
+                forCount = i
+
+                If length <= count Then
+
+                    Exit For
+
+                End If
+
+            Next
+
+        End If
+
+    End Sub
+    'ページ数を表示するメソッド
+    Private Sub pageNum()
+
+        Label2.Text = pageCount & "/" & page
+    End Sub
+
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         '星座検索画面にとぶ
         Dim searchForm As New Search
@@ -98,4 +189,31 @@
         My.Application.ApplicationContext.MainForm = MaintenanceMenu
         Me.Close()
     End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        If pageCount < page Then
+            TextBox1.Text = ""
+            pageCount = pageCount + 1
+            forCount = 0
+            pageNum()
+
+            viewlist(ab)
+        End If
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        If pageCount > 1 Then
+            TextBox1.Text = ""
+            If pageCount = page Then
+                count = count - forCount - 5
+            Else
+                count = count - 10
+            End If
+            pageCount = pageCount - 1
+            pageNum()
+            viewlist(ab)
+        End If
+    End Sub
+
+
 End Class
