@@ -40,6 +40,11 @@ Partial Class MasterMaintenance
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label1
@@ -111,7 +116,7 @@ Partial Class MasterMaintenance
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(50, 300)
+        Me.Button1.Location = New System.Drawing.Point(53, 321)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(57, 27)
         Me.Button1.TabIndex = 10
@@ -120,7 +125,7 @@ Partial Class MasterMaintenance
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(187, 300)
+        Me.Button2.Location = New System.Drawing.Point(186, 321)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(57, 27)
         Me.Button2.TabIndex = 11
@@ -129,7 +134,7 @@ Partial Class MasterMaintenance
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(319, 300)
+        Me.Button3.Location = New System.Drawing.Point(318, 321)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(57, 27)
         Me.Button3.TabIndex = 12
@@ -168,7 +173,7 @@ Partial Class MasterMaintenance
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(145, 114)
+        Me.Label5.Location = New System.Drawing.Point(145, 117)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(0, 18)
         Me.Label5.TabIndex = 17
@@ -176,7 +181,7 @@ Partial Class MasterMaintenance
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(145, 148)
+        Me.Label6.Location = New System.Drawing.Point(145, 151)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(0, 18)
         Me.Label6.TabIndex = 18
@@ -184,7 +189,7 @@ Partial Class MasterMaintenance
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(145, 179)
+        Me.Label7.Location = New System.Drawing.Point(145, 182)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(0, 18)
         Me.Label7.TabIndex = 19
@@ -200,16 +205,66 @@ Partial Class MasterMaintenance
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(145, 241)
+        Me.Label9.Location = New System.Drawing.Point(145, 244)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(0, 18)
         Me.Label9.TabIndex = 21
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(130, 278)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(26, 23)
+        Me.Button5.TabIndex = 23
+        Me.Button5.Text = "＜"
+        Me.Button5.UseVisualStyleBackColor = True
+        '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(269, 278)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(26, 23)
+        Me.Button6.TabIndex = 24
+        Me.Button6.Text = "＞"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(183, 283)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(15, 18)
+        Me.Label10.TabIndex = 25
+        Me.Label10.Text = "1"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(207, 283)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(13, 18)
+        Me.Label11.TabIndex = 26
+        Me.Label11.Text = "/"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(228, 283)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(15, 18)
+        Me.Label12.TabIndex = 27
+        Me.Label12.Text = "1"
         '
         'MasterMaintenance
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(419, 403)
+        Me.Controls.Add(Me.Label12)
+        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.Button6)
+        Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label7)
@@ -255,4 +310,9 @@ Partial Class MasterMaintenance
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents Label9 As Label
+    Friend WithEvents Button5 As Button
+    Friend WithEvents Button6 As Button
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Label11 As Label
+    Friend WithEvents Label12 As Label
 End Class
