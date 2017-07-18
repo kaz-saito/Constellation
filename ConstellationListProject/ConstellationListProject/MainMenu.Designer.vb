@@ -26,21 +26,21 @@ Partial Class MainMenu
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.MainMenuBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MainMenuBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.DataSet1 = New System.Data.DataSet()
         Me.DataSet2 = New System.Data.DataSet()
         Me.DataSet3 = New System.Data.DataSet()
-        Me.MainMenuBindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        CType(Me.MainMenuBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MainMenuBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MainMenuBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MainMenuBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MainMenuBindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
         CType(Me.DataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataSet2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataSet3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MainMenuBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MainMenuBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MainMenuBindingSource2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -72,14 +72,6 @@ Partial Class MainMenu
         Me.Button2.Text = "マスタメンテ"
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'MainMenuBindingSource
-        '
-        Me.MainMenuBindingSource.DataSource = GetType(ConstellationListProject.MainMenu)
-        '
-        'MainMenuBindingSource1
-        '
-        Me.MainMenuBindingSource1.DataSource = GetType(ConstellationListProject.MainMenu)
-        '
         'DataSet1
         '
         Me.DataSet1.DataSetName = "NewDataSet"
@@ -91,10 +83,6 @@ Partial Class MainMenu
         'DataSet3
         '
         Me.DataSet3.DataSetName = "NewDataSet"
-        '
-        'MainMenuBindingSource2
-        '
-        Me.MainMenuBindingSource2.DataSource = GetType(ConstellationListProject.MainMenu)
         '
         'Button3
         '
@@ -116,6 +104,7 @@ Partial Class MainMenu
         '
         'TextBox1
         '
+        Me.TextBox1.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.TextBox1.Location = New System.Drawing.Point(91, 93)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
@@ -129,6 +118,18 @@ Partial Class MainMenu
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(0, 12)
         Me.Label2.TabIndex = 9
+        '
+        'MainMenuBindingSource
+        '
+        Me.MainMenuBindingSource.DataSource = GetType(ConstellationListProject.MainMenu)
+        '
+        'MainMenuBindingSource1
+        '
+        Me.MainMenuBindingSource1.DataSource = GetType(ConstellationListProject.MainMenu)
+        '
+        'MainMenuBindingSource2
+        '
+        Me.MainMenuBindingSource2.DataSource = GetType(ConstellationListProject.MainMenu)
         '
         'MainMenu
         '
@@ -144,11 +145,11 @@ Partial Class MainMenu
         Me.Controls.Add(Me.Label1)
         Me.Name = "MainMenu"
         Me.Text = "MainMenu"
-        CType(Me.MainMenuBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MainMenuBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataSet1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataSet2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataSet3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MainMenuBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MainMenuBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MainMenuBindingSource2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
