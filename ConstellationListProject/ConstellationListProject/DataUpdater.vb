@@ -477,7 +477,7 @@
             Else
 
                 sqlStr = "UPDATE M_CONSTELLATION SET CONSTELLATION_NAME = '" & adderTextbox(checkedId).Text
-                sqlStr = "' WHERE CONSTELLATION_ID = '" & adderRadio(checkedId).Text & "'"
+                sqlStr += "' WHERE CONSTELLATION_ID = '" & adderRadio(checkedId).Text & "'"
 
             End If
 
@@ -496,6 +496,7 @@
         Catch ex As Exception
 
             MsgBox("ラジオボタンにチェックを入れてください")
+            MsgBox(ex.Message())
 
         End Try
 
