@@ -45,6 +45,13 @@
 
             My.Application.ApplicationContext.MainForm = DataAdder
 
+            '更新ボタン
+        ElseIf endType = 4 Then
+
+            DataUpdater.Show()
+
+            My.Application.ApplicationContext.MainForm = DataUpdater
+
         End If
 
         closeConnection()
@@ -396,5 +403,23 @@
             Button5.Enabled = False
 
         End If
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+
+        If maintenanceType = 0 Then
+
+            DataUpdater.Label2.Text = "ユーザー"
+
+        Else
+
+            DataUpdater.Label2.Text = "星座"
+
+        End If
+
+        endType = 4
+
+        Me.Close()
+
     End Sub
 End Class
