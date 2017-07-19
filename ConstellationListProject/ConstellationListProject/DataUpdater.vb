@@ -3,6 +3,16 @@
     Dim endType As Integer
     Dim cn As System.Data.SqlClient.SqlConnection
 
+    Dim nowPage As System.Windows.Forms.Label
+
+    Dim idList As New List(Of String)
+    Dim nameList As New List(Of String)
+
+    Dim adderRadio(2) As System.Windows.Forms.RadioButton
+    Dim adderTextbox(2) As System.Windows.Forms.TextBox
+
+    Dim totalPage As Integer
+
     Sub connectDb()
 
         Try
@@ -92,6 +102,10 @@
 
         createRadioAndTextbox()
 
+        createFooter()
+
+        setData()
+
     End Sub
 
     Sub searchData()
@@ -100,16 +114,46 @@
         Dim sdr As SqlClient.SqlDataReader
         Dim sqlStr As String
 
+        Dim pageCount As Integer
+
         cmd.Connection = cn
         cmd.CommandType = CommandType.Text
 
         If TextBox1.Text.Length = 0 Then
 
-            sqlStr = "SELECT USER_ID, USER_NAME FROM M_USER WHERE USER_NAME LIKE'%" & TextBox2.Text & "%'"
+            If maintenanceType = 0 Then
+
+                sqlStr = "SELECT G_ROW.USER_ID, G_ROW.USER_NAME FROM("
+                sqlStr += "SELECT USER_ID, USER_NAME, ROW_NUMBER() OVER(ORDER BY USER_ID ASC) AS ROW FROM M_USER WHERE USER_NAME LIKE'%" & TextBox2.Text & "%'"
+                sqlStr += ")G_ROW "
+                sqlStr += "WHERE G_ROW.ROW BETWEEN 1 AND 3"
+
+            Else
+
+                sqlStr = "SELECT G_ROW.CONSTELLATION_ID, G_ROW.CONSTELLATION_NAME FROM("
+                sqlStr += "SELECT CONSTELLATION_ID, CONSTELLATION_NAME, ROW_NUMBER() OVER(ORDER BY CONSTELLATION_ID ASC) AS ROW FROM M_CONSTELLATION WHERE CONSTELLATION_NAME LIKE'%" & TextBox2.Text & "%'"
+                sqlStr += ")G_ROW "
+                sqlStr += "WHERE G_ROW.ROW BETWEEN 1 AND 3"
+
+            End If
 
         Else
 
-            sqlStr = "SELECT USER_ID, USER_NAME FROM M_USER WHERE USER_ID = '" & TextBox1.Text & "'"
+            If maintenanceType = 0 Then
+
+                sqlStr = "SELECT G_ROW.USER_ID, G_ROW.USER_NAME FROM("
+                sqlStr += "SELECT USER_ID, USER_NAME, ROW_NUMBER() OVER(ORDER BY USER_ID ASC) AS ROW FROM M_USER WHERE USER_ID = '" & TextBox1.Text & "'"
+                sqlStr += ")G_ROW "
+                sqlStr += "WHERE G_ROW.ROW BETWEEN 1 AND 3"
+
+            Else
+
+                sqlStr = "SELECT G_ROW.CONSTELLATION_ID, G_ROW.CONSTELLATIOIN_NAME FROM("
+                sqlStr += "SELECT CONSTELLATION_ID, CONSTELLATION_NAME, ROW_NUMBER() OVER(ORDER BY CONSTELLATION_ID ASC) AS ROW FROM M_CONSTELLATION WHERE CONSTELLATION_ID = '" & TextBox1.Text & "'"
+                sqlStr += ")G_ROW "
+                sqlStr += "WHERE G_ROW.ROW BETWEEN 1 AND 3"
+
+            End If
 
         End If
 
@@ -119,9 +163,14 @@
 
         While sdr.Read
 
-            MsgBox(sdr(0) & "AND" & sdr(1))
+            idList.Add(sdr(0).ToString())
+            nameList.Add(sdr(1).ToString())
+
+            pageCount += 1
 
         End While
+
+        totalPage = Math.Ceiling(pageCount / 3)
 
         cmd.Dispose()
 
@@ -133,7 +182,8 @@
 
         Dim radioVertical As Integer = 49
         Dim textVertical As Integer = 110
-        Dim horizontal As Integer = 181
+        Dim radioHorizontal As Integer = 165
+        Dim textHorizontal As Integer = 175
 
         For i = 0 To 2
 
@@ -141,20 +191,95 @@
             Dim textbox As New System.Windows.Forms.TextBox
 
             radio.Name = "addRadio" & i
-            radio.Size = New Size(14, 13)
-            radio.Location = New Point(radioVertical, horizontal)
-            radio.Text = "00"
+            radio.Size = New Size(45, 45)
+            radio.Location = New Point(radioVertical, radioHorizontal)
 
-            TextBox.Name = "addText" & i
-            TextBox.Location = New Point(textVertical, horizontal)
-            TextBox.Text = "ooo"
+            adderRadio(i) = radio
+
+            textbox.Name = "addText" & i
+            textbox.Location = New Point(textVertical, textHorizontal)
+
+            adderTextbox(i) = textbox
 
             Me.Controls.Add(radio)
             Me.Controls.Add(textbox)
 
-            horizontal += 42
+            radioHorizontal += 42
+            textHorizontal += 42
 
         Next
 
     End Sub
+
+    Sub createFooter()
+
+        Dim backButton As New System.Windows.Forms.Button
+        Dim nextButton As New System.Windows.Forms.Button
+        Dim child As New System.Windows.Forms.Label
+        Dim slash As New System.Windows.Forms.Label
+        Dim mother As New System.Windows.Forms.Label
+        Dim update As New System.Windows.Forms.Button
+
+        Dim buttonSizeV As Integer = 27
+        Dim buttonSizeH As Integer = 23
+
+        Dim buttonHorizontal As Integer = 295
+        Dim labelHorizontal As Integer = 297
+
+        Dim labelSizeV As Integer = 14
+        Dim labelsizeH As Integer = 13
+
+
+        backButton.Name = "backButton"
+        backButton.Text = "＜"
+        backButton.Size = New Size(buttonSizeV, buttonSizeH)
+        backButton.Location = New Point(104, buttonHorizontal)
+
+        nextButton.Name = "nextButton"
+        nextButton.Text = "＞"
+        nextButton.Size = New Size(buttonSizeV, buttonSizeH)
+        nextButton.Location = New Point(216, buttonHorizontal)
+
+        child.Name = "child"
+        child.Text = 1
+        child.Size = New Size(labelSizeV, labelsizeH)
+        child.Location = New Point(147, labelHorizontal)
+
+        slash.Name = "slash"
+        slash.Text = "/"
+        slash.Size = New Size(labelSizeV, labelsizeH)
+        slash.Location = New Point(168, labelHorizontal)
+
+        mother.Name = "mother"
+        mother.Text = totalPage
+        mother.Size = New Size(labelSizeV, labelsizeH)
+        mother.Location = New Point(189, labelHorizontal)
+
+        update.Name = "updateButton"
+        update.Text = "更新"
+        update.Size = New Size(56, 35)
+        update.Location = New Point(248, 219)
+
+        Me.Controls.Add(nextButton)
+        Me.Controls.Add(backButton)
+        Me.Controls.Add(child)
+        Me.Controls.Add(slash)
+        Me.Controls.Add(mother)
+        Me.Controls.Add(update)
+
+        nowPage = child
+
+    End Sub
+
+    Sub setData()
+
+        For i = 0 To 2
+
+            adderRadio(i).Text = idList(i)
+            adderTextbox(i).Text = nameList(i)
+
+        Next
+
+    End Sub
+
 End Class
