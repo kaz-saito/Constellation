@@ -93,6 +93,12 @@
 
             My.Application.ApplicationContext.MainForm = MasterMaintenance
 
+        ElseIf endType = 2 Then
+
+            DoneMaintenance.Show()
+
+            My.Application.ApplicationContext.MainForm = DoneMaintenance
+
         End If
     End Sub
 
@@ -380,6 +386,7 @@
 
             AddHandler backButton.Click, AddressOf backData
             AddHandler nextButton.Click, AddressOf nextData
+            AddHandler update.Click, AddressOf updateData
 
         End If
 
@@ -443,4 +450,89 @@
         setData()
 
     End Sub
+
+    Sub updateData()
+
+        Try
+
+            Dim checkedId As Integer = searchCheckedRadio()
+
+            Dim cmd As New SqlClient.SqlCommand
+            Dim sqlStr As String
+
+            cmd.Connection = cn
+            cmd.CommandType = CommandType.Text
+
+            If adderTextbox(checkedId).Text.Length > 48 Or adderTextbox(checkedId).Text.Length = 0 Then
+
+                MsgBox("名前は全角16文字以内で入力してください")
+
+            End If
+
+            If maintenanceType = 0 Then
+
+                sqlStr = "UPDATE M_USER SET USER_NAME = '" & adderTextbox(checkedId).Text
+                sqlStr += "' WHERE USER_ID = '" & adderRadio(checkedId).Text & "'"
+
+            Else
+
+                sqlStr = "UPDATE M_CONSTELLATION SET CONSTELLATION_NAME = '" & adderTextbox(checkedId).Text
+                sqlStr = "' WHERE CONSTELLATION_ID = '" & adderRadio(checkedId).Text & "'"
+
+            End If
+
+            cmd.CommandText = sqlStr
+
+            If updateCoution() Then
+
+                cmd.ExecuteNonQuery()
+
+                endType = 2
+
+                Me.Close()
+
+            End If
+
+        Catch ex As Exception
+
+            MsgBox("ラジオボタンにチェックを入れてください")
+
+        End Try
+
+    End Sub
+
+    Function updateCoution() As Boolean
+
+        Dim result As DialogResult = MessageBox.Show("更新を実行してもよろしいでしょうか",
+                                                           "確認",
+                                                         MessageBoxButtons.YesNo,
+                                                         MessageBoxIcon.Exclamation,
+                                                         MessageBoxDefaultButton.Button2)
+
+        If result = DialogResult.Yes Then
+
+            Return True
+
+        End If
+
+        Return False
+
+    End Function
+
+    Function searchCheckedRadio() As Integer
+
+        Dim checked As Integer = 3
+
+        For i = 0 To 2
+
+            If adderRadio(i).Checked Then
+
+                checked = i
+
+            End If
+        Next
+
+        Return checked
+
+    End Function
 End Class
