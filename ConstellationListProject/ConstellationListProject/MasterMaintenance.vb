@@ -38,12 +38,12 @@
 
             My.Application.ApplicationContext.MainForm = DoneMaintenance
 
-            '追加ボタン
+            '追加ボタン(ユーザー)
         ElseIf endType = 3 Then
 
-            DataAdder.Show()
+            UserDataAdder.Show()
 
-            My.Application.ApplicationContext.MainForm = DataAdder
+            My.Application.ApplicationContext.MainForm = UserDataAdder
 
             '更新ボタン
         ElseIf endType = 4 Then
@@ -51,6 +51,13 @@
             DataUpdater.Show()
 
             My.Application.ApplicationContext.MainForm = DataUpdater
+
+            '追加ボタン(星座)
+        ElseIf endType = 5 Then
+
+            ConstellationDataAdder.Show()
+
+            My.Application.ApplicationContext.MainForm = ConstellationDataAdder
 
         End If
 
@@ -314,7 +321,15 @@
 
         End If
 
-        sqlStr = "DELETE M_USER WHERE USER_ID = '" & deleteId & "'"
+        If maintenanceType = 0 Then
+
+            sqlStr = "DELETE M_USER WHERE USER_ID = '" & deleteId & "'"
+
+        Else
+
+            sqlStr = "DELETE M_CONSTELLATION WHERE CONSTELLATION_ID = '" & deleteId & "'"
+
+        End If
 
         cmd.CommandText = sqlStr
 
@@ -334,17 +349,13 @@
 
             If maintenanceType = 0 Then
 
-                DataAdder.Label2.Text = "ユーザー"
-
-
+                endType = 3
 
             Else
 
-                DataAdder.Label2.Text = "星座"
+                endType = 5
 
             End If
-
-            endType = 3
 
             Me.Close()
 

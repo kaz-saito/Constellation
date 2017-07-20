@@ -19,7 +19,6 @@ C:\Users\t-ohta\Documents\GitHub\Constellation\ConstellationListProject\Constell
 C:\Users\t-ohta\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\bin\Debug\ConstellationListProject.pdb
 C:\Users\t-ohta\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\bin\Debug\ConstellationListProject.xml
 C:\Users\t-ohta\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.vbprojResolveAssemblyReference.cache
-C:\Users\t-ohta\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.DataAdder.resources
 C:\Users\t-ohta\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.DoneMaintenance.resources
 C:\Users\t-ohta\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.MainMenu.resources
 C:\Users\t-ohta\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.MaintenanceMenu.resources
@@ -31,3 +30,5 @@ C:\Users\t-ohta\Documents\GitHub\Constellation\ConstellationListProject\Constell
 C:\Users\t-ohta\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.xml
 C:\Users\t-ohta\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.pdb
 C:\Users\t-ohta\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.DataUpdater.resources
+C:\Users\t-ohta\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.UserDataAdder.resources
+C:\Users\t-ohta\Documents\GitHub\Constellation\ConstellationListProject\ConstellationListProject\obj\Debug\ConstellationListProject.ConstellationDataAdder.resources

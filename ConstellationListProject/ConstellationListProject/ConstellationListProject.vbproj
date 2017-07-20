@@ -73,10 +73,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connection.vb" />
-    <Compile Include="DataAdder.Designer.vb">
-      <DependentUpon>DataAdder.vb</DependentUpon>
+    <Compile Include="ConstellationDataAdder.Designer.vb">
+      <DependentUpon>ConstellationDataAdder.vb</DependentUpon>
     </Compile>
-    <Compile Include="DataAdder.vb">
+    <Compile Include="ConstellationDataAdder.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserDataAdder.Designer.vb">
+      <DependentUpon>UserDataAdder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserDataAdder.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DataUpdater.Designer.vb">
@@ -139,8 +145,11 @@
     <Compile Include="SearchDao.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DataAdder.resx">
-      <DependentUpon>DataAdder.vb</DependentUpon>
+    <EmbeddedResource Include="ConstellationDataAdder.resx">
+      <DependentUpon>ConstellationDataAdder.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDataAdder.resx">
+      <DependentUpon>UserDataAdder.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DataUpdater.resx">
       <DependentUpon>DataUpdater.vb</DependentUpon>

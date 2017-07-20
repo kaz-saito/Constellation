@@ -1,37 +1,16 @@
-﻿Public Class DataAdder
+﻿Public Class ConstellationDataAdder
 
-    Dim maintenanceType As Integer
     Dim endType As Integer
     Dim cn As System.Data.SqlClient.SqlConnection
     Private Sub DataAdder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        TextBox2.PasswordChar = "*"
-        TextBox3.PasswordChar = "*"
-
-        If Label2.Text = "ユーザー" Then
-
-            maintenanceType = 0
-
-        Else
-
-            maintenanceType = 1
-
-        End If
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
         endType = 1
 
-        If maintenanceType = 0 Then
-
-            MasterMaintenance.Label2.Text = "ユーザ"
-
-        Else
-
-            MasterMaintenance.Label2.Text = "星座"
-
-        End If
+        MasterMaintenance.Label2.Text = "星座"
 
         Me.Close()
 
@@ -60,11 +39,11 @@
 
         Try
 
-            If lengthCheck() And matchPassCheck() Then
+            If lengthCheck() And comboCheck() Then
 
                 connectDb()
 
-                insertProcess(getNextUserId())
+                insertProcess(getNextConstellationId())
 
                 endType = 2
 
@@ -86,14 +65,7 @@
 
         If TextBox1.Text.Length > 45 Or TextBox1.Text.Length = 0 Then
 
-            MsgBox("氏名は全角15文字以内で入力してください")
-            flag = False
-
-        End If
-
-        If TextBox2.Text.Length > 16 Or TextBox2.Text.Length = 0 Then
-
-            MsgBox("パスワードは半角16文字以内で入力してください")
+            MsgBox("星座名は全角15文字以内で入力してください")
             flag = False
 
         End If
@@ -102,19 +74,18 @@
 
     End Function
 
-    Function matchPassCheck() As Boolean
+    Function comboCheck() As Boolean
 
-        If TextBox2.Text = TextBox3.Text Then
+        Dim flag As Boolean = True
 
-            Return True
+        If ComboBox1.Text.Length = 0 Then
 
-        Else
-
-            MsgBox("パスワードが一致しません")
-
-            Return False
+            MsgBox("季節を選択してください")
+            flag = False
 
         End If
+
+        Return flag
 
     End Function
 
@@ -145,7 +116,7 @@
 
     End Sub
 
-    Function getNextUserId() As String
+    Function getNextConstellationId() As String
 
         Try
 
@@ -158,7 +129,7 @@
             cmd.Connection = cn
             cmd.CommandType = CommandType.Text
 
-            sqlStr = "SELECT MAX(USER_ID) + 1 FROM M_USER"
+            sqlStr = "SELECT MAX(CONSTELLATION_ID) + 1 FROM M_CONSTELLATION"
 
             cmd.CommandText = sqlStr
 
@@ -200,10 +171,10 @@
 
         cmd.CommandType = CommandType.Text
 
-        sqlStr = "INSERT INTO M_USER(USER_ID, USER_NAME, PASSWORD, DELETE_FLAG,
-                    CREATE_DATE, CREATE_USER)"
-        sqlStr += "VALUES('" & id & "','" & TextBox1.Text & "','" & TextBox2.Text
-        sqlStr += "', 0, GETDATE(), '00')"
+        sqlStr = "INSERT INTO M_CONSTELLATION(CONSTELLATION_ID, CONSTELLATION_NAME,
+                    SEASON_ID, ZODIAC_FLAG, DELETE_FLAG, CREATE_DATE, CREATE_USER)"
+        sqlStr += "VALUES('" & id & "','" & TextBox1.Text & "','" & getSeasonId()
+        sqlStr += "', 0, 0, GETDATE(), '00')"
 
         cmd.CommandText = sqlStr
 
@@ -212,4 +183,30 @@
         cmd.Dispose()
 
     End Sub
+
+    Function getSeasonId() As Integer
+
+        Dim seasonId As Integer
+
+        If ComboBox1.Text = "春" Then
+
+            seasonId = 0
+
+        ElseIf ComboBox1.Text = "夏" Then
+
+            seasonId = 1
+
+        ElseIf ComboBox1.Text = "秋" Then
+
+            seasonId = 2
+
+        ElseIf ComboBox1.Text = "冬" Then
+
+            seasonId = 3
+
+        End If
+
+        Return seasonId
+
+    End Function
 End Class
